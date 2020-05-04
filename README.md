@@ -1,4 +1,4 @@
-# Kotlin Spring Boot REST
+# Savings account
 Demonstrating a simple create account REST service using Kotlin, Spring Boot and H2 in-memory DB.
 The account can only be opened from Monday to Friday within working hours and the user may have a single savings account.
 
