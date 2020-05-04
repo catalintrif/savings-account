@@ -4,7 +4,7 @@ package com.catalin.account.api
  * Interface of the account service
  */
 interface AccountService {
-    fun create(account: AccountRequest): Account
+    fun create(request: AccountRequest): Account
 }
 
 data class AccountRequest(
