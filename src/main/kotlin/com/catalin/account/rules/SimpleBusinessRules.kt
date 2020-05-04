@@ -4,16 +4,15 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import java.util.*
-import javax.annotation.PostConstruct
 
 /**
  * Loads business rules from application.properties
  */
 @Component
 class SimpleBusinessRules(
-        @Value("\${working.days}") val daysConfig: String,
-        @Value("\${working.hours}") val hoursConfig: String,
-        @Value("\${currency.list}") val ccyConfig: String
+        @Value("\${working.days}") daysConfig: String,
+        @Value("\${working.hours}") hoursConfig: String,
+        @Value("\${currency.list}") ccyConfig: String
 ) : BusinessRules {
 
     val log = LoggerFactory.getLogger(SimpleBusinessRules::class.java)
