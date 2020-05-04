@@ -17,23 +17,19 @@ class SimpleBusinessRules(
 
     val log = LoggerFactory.getLogger(SimpleBusinessRules::class.java)
 
-    // init with configured values
+    // init with configured values and log them
     val workingDays = daysConfig.split(",").map { it.toInt() }
+            .also { workingDays -> log.info("Configured working days: $workingDays") }
     val workingHours = hoursConfig.split(",").map { it.toInt() }
+            .also { workingHours -> log.info("Configured working hours: $workingHours") }
     val currencyList = ccyConfig.split(",")
-
-    // Print business rules from configuration
-    init {
-        log.info("Configured working days: $workingDays")
-        log.info("Configured working hours: $workingHours")
-        log.info("Valid currencies: $currencyList")
-    }
+            .also { currencyList -> log.info("Valid currencies: $currencyList") }
 
     /**
      * Check current time against business rules
      */
     override fun isWorkingTime(): Boolean {
-        return checkWorkingTime(Date())
+        return checkWorkingTime(Calendar.getInstance().time)
     }
 
     /**
@@ -55,8 +51,8 @@ class SimpleBusinessRules(
     }
 
     /**
-     * Check given currency against business rules
-     * @param time
+     * Check given currency string against business rules
+     * @param currency
      */
     override fun isValidCurrency(currency: String): Boolean {
         return currencyList.contains(currency)
