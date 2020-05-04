@@ -7,9 +7,9 @@ import javax.persistence.Id
 
 @Entity
 class AccountEntity(
-        val userId: String,
-        val type: String,
-        val currency: String
+        val userId: String = "",
+        val type: String = "",
+        val currency: String = ""
 ) {
 
     @Id
