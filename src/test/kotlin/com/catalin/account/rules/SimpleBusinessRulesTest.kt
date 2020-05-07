@@ -32,4 +32,10 @@ class SimpleBusinessRulesTest (
         cal[Calendar.DAY_OF_WEEK] = Calendar.SATURDAY
         assertFalse(rules.checkWorkingTime(cal.time))
     }
+
+    @Test
+    fun `USD should be a valid currency and GBP should not`() {
+        assertTrue(rules.isValidCurrency("USD"))
+        assertFalse(rules.isValidCurrency("GBP"))
+    }
 }
